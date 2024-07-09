@@ -1,7 +1,11 @@
+import 'package:filmler_app/data/entity/filmler.dart';
 import 'package:flutter/material.dart';
 
 class DetaySayfa extends StatefulWidget {
-  const DetaySayfa({super.key});
+  Filmler film;
+
+
+  DetaySayfa({required this.film});
 
   @override
   State<DetaySayfa> createState() => _DetaySayfaState();
@@ -12,9 +16,16 @@ class _DetaySayfaState extends State<DetaySayfa> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Filmler Detay"),
+        title: Text(widget.film.ad),
       ),
-      body: const Center(),
+      body: Center(
+        child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Image.asset("resimler/${widget.film.resim}"),
+            Text("${widget.film.fiyat} ₺" ,style: const TextStyle(fontSize: 50),)
+          ],
+        ),
+      ),
     );
   }
 }
